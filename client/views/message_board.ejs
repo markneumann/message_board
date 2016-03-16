@@ -21,17 +21,20 @@
         <h3>Latest Posts</h3>
         <div id= "data">
             <%for(each in posts) { %>
-                Name: <%= posts[each].name %> &nbsp;&nbsp;&nbsp; <div style="float:right">Created: <%= posts[each].created_at %></div><br>
+                Name: <%= posts[each].name %> <div style="float:right">Created: <%= posts[each].created_at %></div><br>
                 Message:
                 <%= posts[each].message %><br>
-                <%for(each2 in posts.comments) { %>
-                    Name: <%= posts[each].comment[each2] %>&nbsp;&nbsp;&nbsp; <div style="float:right">Created: <%= posts[each].created_at %></div>
-                    Comment: <%= posts[each].comment[each2] %>
+                <p><em>Comments below:</p>
+                <%for(var i = 0; i < posts[each].comments.length; i++) { %>
+                    Commentor: <%= posts[each].comments[i].commentor %><div style="float:right">Created: <%= posts[each].comments[i].created_at %></div><br>
+                    Comment: <%= posts[each].comments[i].theComment %><br>
+                    <br>
                 <% } %>
-                <p>Comments below:</p>
-                <form action='/posts/comment' method='post'>
-                    Your Name: <input type='text' name='name'><br>
-                    Comment: <input type='textarea' name='comment' style="width:600px; height:20px"><br>
+                </em>
+                <p><b>Add more Comments:</b></p>
+                <form action='/new_comment/<%= posts[each].id%>' method='post'>
+                    Your Name: <input type='text' name='commentor'><br>
+                    Comment: <input type='textarea' name='theComment' style="width:600px; height:20px"><br>
                     <input type='submit' value='Post the Comment' style="float:right"><br>
                 </form>
                 <hr>

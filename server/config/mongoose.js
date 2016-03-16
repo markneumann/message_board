@@ -12,6 +12,7 @@ try {
 } catch(err) {
     console.log("mongodb connect error =" + err);
 }
+
 // path to models
 var models_path = path.join(__dirname, './../models');
 // read all of the files in the models_path and require each

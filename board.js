@@ -14,6 +14,8 @@ app.use(express.static(path.join(__dirname, './bower_components')));
 app.set('views', path.join(__dirname, './client'));
 app.set('view engine', 'ejs');
 
+var mongoose = require('mongoose');
 
+require('./server/config/routes.js');
 
 app.listen(8001, function() {});

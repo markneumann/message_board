@@ -12,26 +12,27 @@
         <p id="timestamp"></p>
         <hr>
         <h3>Add a Post</h3>
-        <form action='/posts/new' method='post'>
+        <form action='/new_post' method='post'>
             Your Name: <input type='text' name='name'><br>
-            Message: <input type='text' name='Message' style="width=500px height=300px"><br>
-            <input type='submit' value='Post the Message' style="float:right">
+            Message: <input type='textarea' name='message' style ="width:600px; height:30px"><br>
+            <input type='submit' value='Post the Message' style="float:right"><br>
         </form>
         <hr>
         <h3>Latest Posts</h3>
         <div id= "data">
             <%for(each in posts) { %>
-                Name: <%= posts[each].name %><br>
+                Name: <%= posts[each].name %> &nbsp;&nbsp;&nbsp; <div style="float:right">Created: <%= posts[each].created_at %></div><br>
                 Message:
                 <%= posts[each].message %><br>
                 <%for(each2 in posts.comments) { %>
-                    Name: <%= posts[each].comment[each2] %>
+                    Name: <%= posts[each].comment[each2] %>&nbsp;&nbsp;&nbsp; <div style="float:right">Created: <%= posts[each].created_at %></div>
                     Comment: <%= posts[each].comment[each2] %>
                 <% } %>
+                <p>Comments below:</p>
                 <form action='/posts/comment' method='post'>
                     Your Name: <input type='text' name='name'><br>
-                    Comment: <input type='text' name='Comment' style="width=500px height=300px"><br>
-                    <input type='submit' value='Post the Comment' style="float:right">
+                    Comment: <input type='textarea' name='comment' style="width:600px; height:20px"><br>
+                    <input type='submit' value='Post the Comment' style="float:right"><br>
                 </form>
                 <hr>
             <% } %>

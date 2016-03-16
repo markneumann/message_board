@@ -5,7 +5,7 @@ var mongoose = require('mongoose');
 var PostSchema = new mongoose.Schema({
     //define schema here
     name: String,
-    Post: String
+    message: String
     }, { timestamps: { createdAt: 'created_at'}}
 );
 

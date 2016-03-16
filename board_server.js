@@ -19,7 +19,8 @@ require('./server/config/mongoose.js');
 console.log("required mongoose");
 // routes
 var board_routes = require('./server/config/routes.js')(app);
-board_routes(app); 
+board_routes(app);
+
 console.log("loaded routes");
 
 app.listen(8001, function() {

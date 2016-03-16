@@ -1,7 +1,7 @@
 //********** RESTful routes *************
 var mongoose = require('mongoose');
 var Post = mongoose.model('Post');
-var Posts = require('./../controllers/posts.js');
+var Posts = require('../controllers/posts_controller.js');
 
 module.exports = function(app){
     app.get('/', Posts.index);

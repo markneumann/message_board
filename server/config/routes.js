@@ -1,16 +1,12 @@
 //********** RESTful routes *************
 var mongoose = require('mongoose');
+var Post = mongoose.model('Post');
+var Posts = require('./../controllers/posts.js');
 
-var Posts = mongoose.model('posts');
-
-module.exports = (function(app){
-    app.get('/posts', Posts.index);
+module.exports = function(app){
+    app.get('/', Posts.index);
     app.get('/posts/new', Posts.new);
-    app.get('/posts/:id', Posts.show);
-    app.get('/posts/:id/edit', Posts.edit);
-    app.post('/posts', Posts.create);
-    app.put('/posts/:id', Posts.update);
-    app.delete('/posts/:id', Posts.delete);
-});
-
+    app.post('/new_post', Posts.create);
+    app.post('/new_comment', Comment.create);  // need to define in schema
+};
 //********** End routes **************

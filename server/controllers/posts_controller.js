@@ -9,8 +9,8 @@ module.exports = (function() {
     return {
         index:  function(req, res){
             console.log("--> index path");
-            Post.find({}.sort({createdAt: -1}))
-            .populate('comments')
+            Post.find({}).sort('-created_at')
+            .populate({path:'comments', options: {sort:'-created_at'}})
             .exec(function(err, posts){
                 //console.log(posts);
                 res.render('message_board.ejs', {posts: posts});

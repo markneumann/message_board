@@ -1,5 +1,5 @@
 //basic model
-console.log("loading posts_model");
+console.log("loadiit'sng posts_model");
 var mongoose = require('mongoose');
 // define Schema variable
 var Schema = mongoose.Schema;

@@ -22,7 +22,8 @@ module.exports = (function() {
             var post = new Post({name: req.body.name, message: req.body.message});
             post.save(function(err){
                 if(err) {
-                    console.log("error =" + err);
+                    console.log("post save error");
+                    res.render('errors', {title: 'you have errors!', errors: post.errors});
                 } else {
                     res.redirect('/');
                 }
@@ -40,10 +41,19 @@ module.exports = (function() {
                 //console.log(comment);
                 post.comments.push(comment);
                 comment.save(function(err) {
-                    post.save(function(err){
-                        if(err) {console.log("error =" + err);}
-                        else {res.redirect('/');}
-                    });
+                    if(err) {
+                        console.log("comment save error");
+                        res.render('errors', {title: 'you have errors!', errors: comment.errors});
+                    } else {
+                        post.save(function(err){
+                            if(err) {
+                                console.log("post save after comment save error");
+                                res.render('errors', {title: 'you have errors!', errors: comment.errors});
+                            } else {
+                                res.redirect('/');
+                            }
+                        });
+                    }
                 });
             });
         }

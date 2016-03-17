@@ -22,6 +22,7 @@ var board_routes = require('./server/config/routes.js')(app);
 
 console.log("loaded routes");
 
-app.listen(8001, function() {
+app.listen(8001, function(err) {
+    console.log("err");
     console.log("listening on port 8001 - message_board");
 });

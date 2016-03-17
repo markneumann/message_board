@@ -11,6 +11,11 @@
     <h2>The Dojo Message Board</h2>
         <p id="timestamp"></p>
         <hr>
+        <% if(typeof(errors) != 'undefined') { %>
+            <% for (var x in errors) { %>
+                <h3><%= errors[x].message %></h3>
+            <% } %>
+        <% } %>
         <h3>Add a Post</h3>
         <form action='/new_post' method='post'>
             Your Name: <input type='text' name='name'><br>
